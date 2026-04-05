@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
@@ -7,9 +7,14 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'ShofTV - The Future of Cinema',
+  description: 'Unleashing the magic of the silver screen directly to your living room. Experience stories that move you.',
   generator: 'v0.app',
+  openGraph: {
+    title: 'ShofTV - The Future of Cinema',
+    description: 'Experience unlimited movies and entertainment.',
+    type: 'website',
+  },
   icons: {
     icon: [
       {
@@ -29,6 +34,14 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#0a0a0f',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased bg-black text-white">
         {children}
         <Analytics />
       </body>

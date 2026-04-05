@@ -1,69 +1,10 @@
-'use client';
-
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Navbar } from '@/components/navbar';
+import { Footer } from '@/components/footer';
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-black to-black">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-yellow-500/20 bg-black/80 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-500 text-black font-bold text-lg">
-                🎬
-              </div>
-              <span className="text-2xl font-bold text-white">ShofTV</span>
-            </div>
-
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8">
-              <a href="#" className="text-gray-300 hover:text-white transition">
-                INFINITE
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition">
-                THEATERS
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition">
-                PRICING
-              </a>
-            </nav>
-
-            <div className="flex items-center gap-4">
-              <button className="hidden md:block px-6 py-2 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition">
-                JOIN NOW
-              </button>
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden text-yellow-500"
-              >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <nav className="mt-4 flex flex-col gap-4 md:hidden border-t border-yellow-500/20 pt-4">
-              <a href="#" className="text-gray-300 hover:text-white transition">
-                INFINITE
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition">
-                THEATERS
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white transition">
-                PRICING
-              </a>
-              <button className="w-full px-6 py-2 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400 transition">
-                JOIN NOW
-              </button>
-            </nav>
-          )}
-        </div>
-      </header>
+      <Navbar />
 
       {/* WeUnder Banner */}
       <div className="bg-yellow-500 text-black py-3">
@@ -206,44 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-yellow-500/20 bg-black py-12 px-4">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-yellow-500 text-black font-bold">
-                  🎬
-                </div>
-                <span className="text-lg font-bold">ShofTV</span>
-              </div>
-              <p className="text-gray-400 text-sm">Your ultimate destination for curated cinema.</p>
-            </div>
-            {[
-              { title: 'Product', links: ['Features', 'Pricing', 'Security'] },
-              { title: 'Company', links: ['About', 'Blog', 'Careers'] },
-              { title: 'Legal', links: ['Privacy', 'Terms', 'Contact'] },
-            ].map((col) => (
-              <div key={col.title}>
-                <h4 className="font-bold mb-4">{col.title}</h4>
-                <ul className="space-y-2">
-                  {col.links.map((link) => (
-                    <li key={link}>
-                      <a href="#" className="text-gray-400 hover:text-yellow-500 transition text-sm">
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2024 ShofTV. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
